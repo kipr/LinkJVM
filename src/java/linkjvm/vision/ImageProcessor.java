@@ -43,8 +43,6 @@ public class ImageProcessor {
 	public ImageProcessor(CameraConfig cameraConfig, int channel){
 		jniDevice = JNIController.getInstance().getCameraFactory().getInstance(cameraConfig);
 		jniDevice.setConfig(cameraConfig.getChannelConfig());
-		jniDevice.setHeight(cameraConfig.getResolution().height);
-		jniDevice.setWidth(cameraConfig.getResolution().width);
 		this.channel = channel;
 	}
 	
@@ -53,7 +51,12 @@ public class ImageProcessor {
 	 * @return <code>true</code> on success and <code>false</code> if an error occurs.
 	 */
 	public boolean openCamera(){
-		return jniDevice.open();
+		if(jniDevice.open()){
+			jniDevice.setHeight(cameraConfig.getResolution().height);
+			jniDevice.setWidth(cameraConfig.getResolution().width);
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -138,3 +141,4 @@ public class ImageProcessor {
 		return ret;
 	}
 }
+
