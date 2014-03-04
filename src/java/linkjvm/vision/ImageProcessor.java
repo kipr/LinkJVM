@@ -34,6 +34,7 @@ import linkjvm.low.vision.IntRectangle;
 public class ImageProcessor {
 	private Device jniDevice;
 	private int channel;
+	private CameraConfig cameraConfig;
 	
 	/**
 	 * Cunstructs a new ImageProcessor with the given {@link CameraConfig} and a channel number 
@@ -44,6 +45,7 @@ public class ImageProcessor {
 		jniDevice = JNIController.getInstance().getCameraFactory().getInstance(cameraConfig);
 		jniDevice.setConfig(cameraConfig.getChannelConfig());
 		this.channel = channel;
+		this.cameraConfig = cameraConfig;
 	}
 	
 	/**
