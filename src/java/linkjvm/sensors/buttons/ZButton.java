@@ -39,6 +39,15 @@ private volatile IdButton jniButton;
 	public ZButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.Z);
 	}
+	
+	/**
+	 * Constructs a new z button with the given text
+	 * @param text text on the button
+	 */
+	public ZButton(String text) {
+		this();
+		this.setText(text);
+	}
 
 	@Override
 	public boolean getValue() {

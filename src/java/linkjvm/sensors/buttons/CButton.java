@@ -39,6 +39,15 @@ public class CButton extends AbstractButton implements TextButton{
 	public CButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.C);
 	}
+	
+	/**
+	 * Constructs a new c button with the given text
+	 * @param text text on the button
+	 */
+	public CButton(String text) {
+		this();
+		this.setText(text);
+	}
 
 	@Override
 	public boolean getValue() {

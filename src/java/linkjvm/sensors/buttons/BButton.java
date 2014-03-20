@@ -40,6 +40,15 @@ public class BButton extends AbstractButton implements TextButton{
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.B);
 	}
 	
+	/**
+	 * Constructs a new b button with the given text
+	 * @param text text on the button
+	 */
+	public BButton(String text) {
+		this();
+		this.setText(text);
+	}
+	
 	@Override
 	public boolean getValue() {
 		return jniButton.isPressed();

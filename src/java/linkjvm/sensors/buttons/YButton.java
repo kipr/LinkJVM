@@ -39,6 +39,15 @@ private volatile IdButton jniButton;
 	public YButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.Y);
 	}
+	
+	/**
+	 * Constructs a new y button with the given text
+	 * @param text text on the button
+	 */
+	public YButton(String text) {
+		this();
+		this.setText(text);
+	}
 
 	@Override
 	public boolean getValue() {

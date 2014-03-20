@@ -39,6 +39,15 @@ private volatile IdButton jniButton;
 	public XButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.X);
 	}
+	
+	/**
+	 * Constructs a new x button with the given text
+	 * @param text text on the button
+	 */
+	public XButton(String text) {
+		this();
+		this.setText(text);
+	}
 
 	@Override
 	public boolean getValue() {
