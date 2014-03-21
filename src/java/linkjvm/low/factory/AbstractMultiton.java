@@ -70,16 +70,4 @@ public abstract class AbstractMultiton<U, I>{
 			list.remove(referenceToDeletedObject.get());
 		}		
 	}
-	
-	public class A{
-		
-	}
-	
-	public class B extends A{
-		
-	}
-	
-	public class C extends A{
-		
-	}
 }
