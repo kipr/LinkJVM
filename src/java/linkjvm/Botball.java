@@ -64,7 +64,7 @@ public class Botball {
 			msleep(50);
 		}
 		onValue = lightSensor.getValue();
-		msleep(200);
+		while(button.isPressed());
 		System.out.println("\f");
 		button.setText("Light is OFF");
 		while(!button.isPressed()){
