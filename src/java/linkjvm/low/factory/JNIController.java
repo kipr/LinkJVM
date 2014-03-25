@@ -20,14 +20,13 @@
 
 package linkjvm.low.factory;
 
-public class JNIController implements Runnable{
+public class JNIController{
 	
 	private final static JNIController instance = new JNIController();
 	private static boolean isInited = false;
 	
 	public static JNIController getInstance(){
 		init();
-		instance.startCleanup();
 		return instance;
 	}
 	
@@ -44,10 +43,6 @@ public class JNIController implements Runnable{
 	private final ServoFactory servoFactory;
 	private final CameraFactory cameraFactory;
 	private final ConfigFactory configFactory;
-	
-	private volatile boolean stopCleanup = false;
-	
-	private Thread cleanupThread;
 	
 	/**
 	 * 
@@ -74,42 +69,7 @@ public class JNIController implements Runnable{
 	public static void init(){
 		if(!isInited){
 			System.loadLibrary("linkjvmjni");
-		}
-	}
-	
-	@Override
-	public void run() {
-		stopCleanup = false;
-		while(!stopCleanup){
-			accelerationFactory.cleanup();
-			analog8Factory.cleanup();
-			analogFactory.cleanup();
-			buttonFactory.cleanup();
-			digitalFactory.cleanup();
-			motorFactory.cleanup();
-			servoFactory.cleanup();
-			cameraFactory.cleanup();
-			configFactory.cleanup();
-		}		
-	}
-	
-	/**
-	 * 
-	 */
-	public void stopCleanup(){
-		stopCleanup = true;
-	}
-	
-	/**
-	 * 
-	 */
-	public void startCleanup(){
-		if(cleanupThread == null){
-			cleanupThread = new Thread(this);
-			cleanupThread.setDaemon(true);
-		}
-		if(!cleanupThread.isAlive()){
-			cleanupThread.start();
+			isInited = true;
 		}
 	}
 	
