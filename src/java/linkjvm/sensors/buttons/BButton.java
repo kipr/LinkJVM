@@ -38,6 +38,7 @@ public class BButton extends AbstractButton implements TextButton{
 	 */
 	public BButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.B);
+		this.setText("B");
 	}
 	
 	/**

@@ -38,6 +38,7 @@ public class CButton extends AbstractButton implements TextButton{
 	 */
 	public CButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.C);
+		this.setText("C");
 	}
 	
 	/**

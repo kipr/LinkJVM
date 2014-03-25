@@ -38,6 +38,7 @@ private volatile IdButton jniButton;
 	 */
 	public XButton(){
 		jniButton = JNIController.getInstance().getButtonFactory().getInstance(linkjvm.low.buttons.Id.X);
+		this.setText("X");
 	}
 	
 	/**
