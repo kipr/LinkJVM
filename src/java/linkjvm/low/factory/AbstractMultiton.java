@@ -20,13 +20,8 @@
 
 package linkjvm.low.factory;
 
-import gnu.javax.crypto.cipher.WeakKeyException;
-
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public abstract class AbstractMultiton<U, I>{
 	private HashMap<U, WeakReference<I>> instances;
@@ -53,6 +48,14 @@ public abstract class AbstractMultiton<U, I>{
 			instances.put(uniqueIdentifier, weakReference);
 		}
 		return weakReference.get();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	protected HashMap<U, WeakReference<I>> getInstances(){
+		return instances;
 	}
 	
 	/**

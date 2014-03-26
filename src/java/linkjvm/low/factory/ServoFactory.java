@@ -20,6 +20,8 @@
 
 package linkjvm.low.factory;
 
+import java.lang.ref.WeakReference;
+
 import linkjvm.low.Servo;
 
 /**
@@ -27,11 +29,19 @@ import linkjvm.low.Servo;
  * @author Markus Klein
  *
  */
-public class ServoFactory extends AbstractMultiton<Integer, Servo>{
+public class ServoFactory extends AbstractMultiton<Integer, Servo> implements ShutdownHookFactory{
 	
 	@Override
 	protected Servo getNewConcreteInstance(Integer uniqueIdentifier) {
 		return new Servo(uniqueIdentifier);
 	}
-	
+
+	@Override
+	public void runShutdownHook() {
+		for(WeakReference<Servo> servo : getInstances().values()){
+			if(servo.get() != null){
+				servo.get().disable();
+			}
+		}
+	}
 }

@@ -61,6 +61,16 @@ public class JNIController{
 		createFactory = new CreateFactory();
 		depthFactory = new DepthFactory();
 		usbInputProviderFactory = new UsbInputProviderFactory();
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				createFactory.runShutdownHook();
+				motorFactory.runShutdownHook();
+				servoFactory.runShutdownHook();
+			}
+		}));
 	}
 
 	/**

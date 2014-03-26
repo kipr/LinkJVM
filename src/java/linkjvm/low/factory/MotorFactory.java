@@ -20,6 +20,8 @@
 
 package linkjvm.low.factory;
 
+import java.lang.ref.WeakReference;
+
 import linkjvm.low.motors.Motor;
 
 /**
@@ -27,11 +29,20 @@ import linkjvm.low.motors.Motor;
  * @author Markus Klein
  *
  */
-public class MotorFactory extends AbstractMultiton<Integer, Motor>{
+public class MotorFactory extends AbstractMultiton<Integer, Motor> implements ShutdownHookFactory{
 
 	@Override
 	protected Motor getNewConcreteInstance(Integer uniqueIdentifier) {
 		return new Motor(uniqueIdentifier);
+	}
+
+	@Override
+	public void runShutdownHook() {
+		for(WeakReference<Motor> motor : getInstances().values()){
+			if(motor.get() != null){
+				motor.get().off();
+			}
+		}
 	}
 	
 }

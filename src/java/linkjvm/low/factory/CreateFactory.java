@@ -27,10 +27,16 @@ import linkjvm.low.create.Create;
  * @author Markus Klein
  *
  */
-public class CreateFactory{
+public class CreateFactory implements ShutdownHookFactory{
 
 	public Create getInstance() {
 		return Create.instance();
+	}
+
+	@Override
+	public void runShutdownHook() {
+		Create.instance().stop();
+		Create.instance().disconnect();
 	}
 
 }
