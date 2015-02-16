@@ -13,7 +13,7 @@ set(JAVA_SRC
 	${JAVA_SRC_DIR}/linkjvm/ardrone/navdata/javadrone/*.java
 	${JAVA_SRC_DIR}/linkjvm/ardrone/navdata/*.java
 	${JAVA_SRC_DIR}/linkjvm/ardrone/utils/*.java
-	${JAVA_SRC_DIR}/linkjvm/ardrone/video/*.java
+	${JAVA_SRC_DIR}/linkjvm/ardrone/video/*.javaCase
 	${JAVA_SRC_DIR}/linkjvm/ardrone/*.java
 	${JAVA_SRC_DIR}/linkjvm/create/*.java
 	${JAVA_SRC_DIR}/linkjvm/debugger/*.java
