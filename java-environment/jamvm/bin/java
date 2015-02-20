@@ -1,2 +1,2 @@
 #!/bin/bash
-LD_LIBRARY_PATH=/usr/lib/classpath /usr/bin/java_internal -Xbootclasspath:/usr/share/jamvm/classes.zip:/usr/share/classpath/glibj.zip:/usr/share/classpath/tools.zip $@
+LD_LIBRARY_PATH=/usr/lib/classpath /usr/bin/java_internal -Xbootclasspath:/usr/share/jamvm/classes.zip:/usr/share/classpath/glibj.zip:/usr/share/classpath/tools.zip:/usr/lib/libkovan.jar $@
